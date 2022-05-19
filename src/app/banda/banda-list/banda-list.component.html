@@ -1,26 +1,32 @@
 <div class="container-fluid">
-  <div class="col-6">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="h4">id</th>
-          <th class="h4">name</th>
-          <th class="h4">number of members</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let c of bandas">
-          <td>
-            <dd>{{c.id}}</dd>
-          </td>
-          <td>
-            <dd>{{c.name}}</dd>
-          </td>
-          <td>
-            <dd>{{c.numberOfMembers}}</dd>
-          </td>
+
+  <table class="table" id="tablaseries">
+    <thead class="thead-light" id="cabe">
+      <tr>
+        <th class="h4">id</th>
+        <th class="h4">name</th>
+        <th class="h4">number of members</th>
       </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of bandas">
+        <td>
+          <dd>{{c.id}}</dd>
+        </td>
+        <td>
+          <dd>{{c.name}}</dd>
+        </td>
+        <td>
+          <dd>{{c.numberOfMembers}}</dd>
+        </td>
+    </tr>
+    <tr>
+      <td colspan=2 id="prom">
+        Members average: {{darPromedioMiembros(bandas)}}
+      </td>
+    </tr>
+    <div class = "col" *ngIf="selected">
+       <!-- <app-actividad-detail [bandaDetail]="selectedBanda"></app-actividad-detail> -->
+      </div>
+    </tbody>
+  </table>

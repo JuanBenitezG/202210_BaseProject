@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "base-project": {
+    "mynewapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,13 +17,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/base-project",
+            "outputPath": "dist/mynewapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -63,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "base-project:build:production"
+              "browserTarget": "mynewapp:build:production"
             },
             "development": {
-              "browserTarget": "base-project:build:development"
+              "browserTarget": "mynewapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "base-project:build"
+            "browserTarget": "mynewapp:build"
           }
         },
         "test": {
@@ -84,10 +87,12 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
            ],
             "scripts": []
           }
@@ -95,5 +100,5 @@
       }
     }
   },
-  "defaultProject": "base-project"
+  "defaultProject": "mynewapp"
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Banda } from '../banda';
+import { BandaDetail } from '../banda-detail';
 import { BandaService } from '../banda.service';
 
 @Component({
@@ -9,13 +10,12 @@ import { BandaService } from '../banda.service';
 })
 export class BandaListComponent implements OnInit {
 
-  //selected: Boolean = false;
-  //selectedActividad!: ActividadDetail;
+  selected: Boolean = false;
+  selectedBanda!: BandaDetail;
 
-  //onSelected(escenario: ActividadDetail):void{
-  //  this.selected = true;
-   // this.selectedActividad = escenario;
- // }
+  onSelected(banda: BandaDetail):void{
+    this.selected = true;
+  }
   bandas :Array<Banda>=[];
 
   constructor(private servicioBanda:BandaService) { }
@@ -31,4 +31,11 @@ export class BandaListComponent implements OnInit {
 
 }
 
+public darPromedioMiembros(bandass: Banda[]){
+  let suma=0
+  for(let i=0;i<bandass.length;i++){
+      suma+=bandass[i].numberOfMembers;
+  }
+  return Math.ceil((suma/bandass.length))
+}
 }
